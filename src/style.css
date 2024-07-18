@@ -1,0 +1,121 @@
+:root {
+  --font-family: Arial, sans-serif;
+  --bg-color: #ffffff;
+  --primary-color: #007BFF;
+  --primary-color-hover: #0056b3;
+  --text-color: #333;
+  --text-color-light: #666;
+  --border-radius: 10px;
+  --padding: 20px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition: background-color 0.3s ease;
+  --font-size-large: 1.5em;
+  --font-size-medium: 1.2em;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: var(--font-family);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px;
+  margin: 24px 0;
+  background-color: var(--bg-color);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.weather-blocks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.weather-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.weather-form select,
+.weather-form button,
+.weather-info button,
+.weather-block button {
+  font-size: var(--font-size-medium);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.weather-form select:focus,
+.weather-form button:focus,
+.weather-info button:focus,
+.weather-block button:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.weather-form button,
+.weather-info button,
+.weather-block button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.weather-form button:hover,
+.weather-info button:hover,
+.weather-block button:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.weather-info h2,
+.weather-block h2 {
+  margin-top: 0;
+  font-size: var(--font-size-large);
+  color: var(--text-color);
+}
+
+.weather-info p,
+.weather-block p {
+  margin: 10px 0;
+  font-size: var(--font-size-medium);
+  color: var(--text-color-light);
+}
+
+.weather-info p strong,
+.weather-block p strong {
+  color: var(--text-color);
+}
+
+/* weather-blocks are styled to be 2 wide -- ignore this */
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 1fr; 
+  }
+}
