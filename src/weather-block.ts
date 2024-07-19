@@ -30,10 +30,6 @@ export class WeatherBlock extends HTMLElement {
         this.render();
     }
 
-    get data() {
-        return this._data;
-    }
-
     private render() {
         if (!this._data) {
             return;

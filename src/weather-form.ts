@@ -11,7 +11,6 @@ export class WeatherForm extends HTMLElement {
                 <select name="city" id="city">
                     <option value="">Choose a city</option>
                 </select>
-                <button type="submit">Update</button>
             </form>
             <style>
                 .weather-form {

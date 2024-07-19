@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const weatherForm = weatherFormElement.shadowRoot?.querySelector(".weather-form") as HTMLFormElement;
     const weatherInfo = document.querySelector(".weather-info") as HTMLElement;
     const weatherBlocks = document.querySelector(".weather-blocks") as HTMLElement;
+    const cityArray: string[] = ["Melbourne", "London", "Miami", "Berlin", "Madrid", "Accra"];
     const weatherApiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
     if (!weatherForm || !weatherInfo || !weatherBlocks) {
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const selectCity = weatherForm.querySelector("#city") as HTMLSelectElement;
-    const cityArray: string[] = ["Melbourne", "London", "Miami", "Berlin", "Madrid", "Accra"];
 
     cityArray.forEach(city => {
         const option = document.createElement("option");
@@ -26,11 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
         selectCity.appendChild(option);
     });
 
-    weatherForm.addEventListener("submit", async (event: Event) => {
-        event.preventDefault();
-        const form = event.target as HTMLFormElement;
-        const city = (form.elements.namedItem("city") as HTMLSelectElement).value;
-
+    weatherForm.addEventListener("change", async (event: Event) => {
+        
+        const city = selectCity.value;
+        
         if (!city) return;
 
         try {
