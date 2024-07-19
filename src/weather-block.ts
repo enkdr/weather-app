@@ -30,12 +30,18 @@ export class WeatherBlock extends HTMLElement {
         this.render();
     }
 
+    get data() {
+        return this._data;
+    }
+
     private render() {
-        if (!this._data) return;
+        if (!this._data) {
+            return;
+        }
 
         this.shadowRoot!.innerHTML = `
             <style>
-                @import url("/static/css/app.css");
+                @import url("/src/style.css");
             </style>
             <div class="weather-block">
                 <h2>${this._data.location.name}, ${this._data.location.country}</h2>
@@ -44,7 +50,7 @@ export class WeatherBlock extends HTMLElement {
                 <p><strong>Wind:</strong> ${this._data.current.wind_kph} km/h</p>
                 <p><strong>Humidity:</strong> ${this._data.current.humidity}%</p>                
                 <button class="remove-weather-block">Remove</button>
-             </div>
+            </div>
         `;
 
         const removeBtn = this.shadowRoot!.querySelector('.remove-weather-block');

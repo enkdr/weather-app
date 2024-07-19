@@ -1,7 +1,7 @@
 import './style.css'
-import { WeatherBlock } from './weather-block.ts'
 import './weather-form.ts'
-import './weather-setup.ts'
+import './weather-init.ts'
+import { WeatherBlock } from './weather-block.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <content>
@@ -12,5 +12,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>    
     <div class="weather-blocks">
     </div>    
-    <weather-block></weather-block>
   </content>`
