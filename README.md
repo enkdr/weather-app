@@ -4,4 +4,4 @@ Updated to use typescript.
 
 Utilising web-components -- no frameworks used.
 
-![weather-app-ts](https://github.com/user-attachments/assets/30b7ec1c-ccad-42fc-8da8-283b11a13043)
+![output](https://github.com/user-attachments/assets/d3753d3d-e174-4aa5-b18d-dc4f59d548f1)
