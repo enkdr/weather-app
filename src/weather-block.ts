@@ -53,7 +53,6 @@ export class WeatherBlock extends HTMLElement {
         if (removeBtn) {
             removeBtn.addEventListener('click', () => {
                 const btnAction = removeBtn.getAttribute('data-btn-action');
-                console.log('Button action:', btnAction);
                 if (btnAction !== "add") {
                     this.remove();
                 }
