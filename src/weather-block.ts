@@ -45,14 +45,18 @@ export class WeatherBlock extends HTMLElement {
                 <p><strong>Condition:</strong> ${this._data.current.condition.text}</p>
                 <p><strong>Wind:</strong> ${this._data.current.wind_kph} km/h</p>
                 <p><strong>Humidity:</strong> ${this._data.current.humidity}%</p>                
-                <button class="remove-weather-block">Remove</button>
+                <button class="weather-block-btn" data-btn-action="${this._data.btnAction}">${this._data.btnText}</button>
             </div>
         `;
 
-        const removeBtn = this.shadowRoot!.querySelector('.remove-weather-block');
+        const removeBtn = this.shadowRoot!.querySelector('.weather-block-btn');
         if (removeBtn) {
             removeBtn.addEventListener('click', () => {
-                this.remove();
+                const btnAction = removeBtn.getAttribute('data-btn-action');
+                console.log('Button action:', btnAction);
+                if (btnAction !== "add") {
+                    this.remove();
+                }
             });
         }
     }

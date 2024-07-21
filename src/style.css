@@ -2,6 +2,7 @@
   --font-family: Arial, sans-serif;
   --bg-color: #ffffff;
   --primary-color: #007BFF;
+  --disabled-color: #5393D9;
   --primary-color-hover: #0056b3;
   --text-color: #333;
   --text-color-light: #666;
@@ -86,6 +87,15 @@ body, html {
   background-color: var(--primary-color);
   color: white;
   border: none;
+}
+
+.weather-block-btn.disabled {
+  background-color: var(--disabled-color);
+}
+
+.weather-block-btn.disabled:hover {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
 }
 
 .weather-form button:hover,

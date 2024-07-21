@@ -5,7 +5,7 @@ import { WeatherBlock } from './weather-block.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <content>
-    <div class="row">
+<div class="row" style="min-height: 260px;">
       <weather-form></weather-form> <!-- Use the custom weather form element -->
       <div class="weather-info">
       </div>

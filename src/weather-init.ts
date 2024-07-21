@@ -31,27 +31,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const city = selectCity.value;
         
         if (!city) return;
-
+        
         try {
+
+            weatherInfo.innerHTML = "";
             const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${city}&aqi=no`);
             const data = await response.json();
 
-            weatherInfo.innerHTML = `
-                <h2>${data.location.name}, ${data.location.country}</h2>
-                <p><strong>Temperature:</strong> ${data.current.temp_c} °C</p>
-                <p><strong>Condition:</strong> ${data.current.condition.text}</p>
-                <p><strong>Wind:</strong> ${data.current.wind_kph} km/h</p>
-                <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
-                <button id="add-weather-block">Add Weather Block</button>
-            `;
+            const tmpWeatherBlock = document.createElement('weather-block') as WeatherBlock;
 
-            const addButton = document.getElementById("add-weather-block") as HTMLButtonElement | null;
-            if (addButton) {
-                addButton.addEventListener("click", () => {
+            data.btnAction = "add"
+            data.btnText = "Add Weather Block"
+            tmpWeatherBlock.data = data;
+            weatherInfo.appendChild(tmpWeatherBlock);
+            
+            const shadowRoot = tmpWeatherBlock.shadowRoot;
+            const weatherBlockBtn = shadowRoot.querySelector(".weather-block-btn")
+
+            if (weatherBlockBtn) {
+                weatherBlockBtn.addEventListener("click", () => {
+                    weatherBlockBtn.disabled = "true"                    
+                    weatherBlockBtn.classList.toggle("disabled")
                     const weatherBlock = document.createElement('weather-block') as WeatherBlock;
                     weatherBlock.data = data;
+                    data.btnAction = "remove"
+                    data.btnText = "Remove"
                     weatherBlocks.appendChild(weatherBlock);
-                    addButton.disabled = true;
                 });
             } else {
                 console.error('Add Weather Block button not found.');
